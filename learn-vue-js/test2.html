@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+
+<body>
+    <div id="app">
+        <p>1+1 = 2</p>
+        <p v-if="check">đúng cmnr</p>
+        <p v-else>sai </p>
+        <button @click="check = !check"> click</button>
+        <template v-if="check">
+            
+        </template>
+        <div v-show="check">
+            <div> menu2 </div>
+        </div>
+        <template v-for="(item, index) in tests">
+            <div>
+                <h4>{{item.name}},  {{index +1 }}</h4>
+            </div>
+            
+         </template>
+
+        <template v-for="(item, index) in students">
+            <p>
+                stt = {{index +1}} ,tên = {{  item.name}}, tuổi = {{  item.age}}, nguồn = {{item}}
+            </p>
+            <p v-for="(value, key) in item">
+                {{key}}
+                 {{value}}
+            </p>
+         </template>
+    </div>
+
+
+    <ul id="example-1">
+        <li v-for="item in items">
+            {{ item.name }}
+        </li>
+    </ul>
+
+    <div id="ex-3">
+        <input type="checkbox" v-model="checkedNumber" value="1">
+        <label for="1"> 1</label>
+        <input type="checkbox" v-model="checkedNumber" value="2">
+        <label for="2"> 2</label>
+        <input type="checkbox" v-model="checkedNumber" value="3">
+        <label for="3"> 3</label>
+        <input type="checkbox" v-model="checkedNumber" value="4">
+        <label for="4"> 4</label>
+
+        <span>số đã chọn {{checkedNumber}} </span>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                check: true,
+                tests: [{
+                    name: 'một'
+                }, {
+                    name: 'hai'
+                }, {
+                    name: 'ba'
+                }, ],
+
+                students: [{
+                    name: "vũ",
+                    age: 12
+                }, {
+                    name: "vũ1",
+                    age: 13
+                }]
+            }
+        })
+
+        var example1 = new Vue({
+            el: '#example-1',
+            data: {
+                items: [{
+                    name: 'Cà phê'
+                }, {
+                    name: 'Trà đặc'
+                }, {
+                    name: 'Bò húc'
+                }]
+            }
+        })
+        var ex3 = new Vue({
+            el: "#ex-3",
+            data: {
+                checkedNumber: []
+            }
+        })
+    </script>
+</body>
+
+</html>
