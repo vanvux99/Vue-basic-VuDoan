@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Test Vue JS</title>
+    <style>
+        .hv {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            margin: 10px;
+        }
+        
+        .do {
+            background-color: red;
+        }
+        
+        .xanh {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="hv" @click="quanlido = !quanlido" :class="{do : quanlido}"></div>
+        <div class="hv" :class="{do : quanlido}"></div>
+        <div class="hv" @click="quanlixanh = !quanlixanh" :class="{xanh : quanlixanh}"></div>
+        <div class="hv" :class="{do : quanlido}"></div>
+    </div>
+
+    <script>
+        // phân biệt giữa click các ô và computed, k o3 -> đỏ, o3 -> xanh
+        new Vue({
+            el: "#app",
+            data: {
+                quanlido: false,
+                quanlixanh: false,
+            },
+            method: {}
+        });
+    </script>
+</body>
+
+</html>
