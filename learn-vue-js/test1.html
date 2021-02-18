@@ -40,27 +40,66 @@
         <input type="text " v-model="color ">
     </div>
 
+
+    <div id="components-demo">
+        <app1></app1>
+        <app1></app1>
+    </div>
+
+    <div id="blog-post-demo">
+        <blog-post title="Giới thiệu về Vue"></blog-post>
+        <blog-post title="Các khái niệm trong Vue"></blog-post>
+        <blog-post-infomation v-for="itemProp in posts" :key="itemProp.id"> {{itemProp.id}}</blog-post-infomation>
+    </div>
+
+
     <script>
-        cl = document.querySelector("input[type='text' ] ")
-        new Vue({
-            el: "#app ",
-            data: {
-                color: 'gray'
-            },
-            computed: {
-                test1 = () => {
-                    return {
-                        backgroundColor = this.color
-                    }
+        Vue.component("app1", {
+            data: () => {
+                return {
+                    count: 0
                 }
             },
-            method: {
-                // divClass: () => {
-                //     return this.color = 'xanh'
-                // }
-            }
-
+            template: '<button @click="count++"> bấm {{count}} </button > '
         })
+
+
+        var components_demo = new Vue({
+            el: "#components-demo"
+        })
+
+        Vue.component('blog-post', {
+            props: ['title'],
+            template: '<h3>{{ title }}</h3>'
+        })
+
+        Vue.component('blog-post-infomation', {
+            template: '<h3>{{  }}</h3>'
+        })
+
+        var demoBlog = new Vue({
+            el: '#blog-post-demo',
+            data: {
+                posts: [{
+                    id: 1,
+                    title: 'Giới thiệu về Vue'
+                }, {
+                    id: 2,
+                    title: 'Các khái niệm trong Vue'
+                }, {
+                    id: 3,
+                    title: 'Vue căn bản và vô cùng nâng cao'
+                }]
+            },
+            method: {
+
+                destroy: function() {
+                    this.$destroy();
+                }
+            }
+        })
+
+        console.log(demoBlog);
     </script>
 </body>
 
